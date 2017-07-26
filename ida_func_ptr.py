@@ -236,12 +236,14 @@ def copy_function(addr):
         callTypeStart = funcDef[0 : funcNameStart].rfind(' ')
         callType = funcDef[callTypeStart + 1 : funcNameStart]
         returnTypeEnd = callTypeStart
+        if callType == "__cdecl":
+            callType = ""
 
     returnType = funcDef[returnTypeStart : returnTypeEnd]
     funcName = funcDef[funcNameStart + 1 : parenthesesStart]
     args = funcDef[parenthesesStart + 1 : parenthesesEnd]
 
-    finalString = "static {0} ({1}* const {2})({3}) = ({0}({1}*)({3}))({4});".format(
+    finalString = "{0} ({1}* {2})({3}) = ({0}({1}*)({3}))({4});".format(
         returnType, callType, funcName, args, "0x%08X" % func_addr
     )
 
