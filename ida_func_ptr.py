@@ -54,7 +54,7 @@ class funcref_t(idaapi.plugin_t):
         idaapi.msg("%s cannot be run as a script.\n" % self.wanted_name)
 
     def term(self):
-        if self._hooks is None:
+        if not hasattr(self, '_hooks'):
             return
 
         # unhook our plugin hooks
