@@ -9,6 +9,13 @@
 ida_func_ptr is a small utility plugin for [IDA Pro](https://www.hex-rays.com/products/ida/).
 The plugin allows you to copy C function pointer definitions of functions through the context menus.
 
+For example the screenshot above will copy the following text onto the clipboard:
+
+```c
+int(* PCMain_cpp_PlayPreIntro)() = (int(*)())(0x00646FF0);
+void(* PCMain_PlayIntroLogos)() = (void(*)())(0x00647250);
+```
+
 ## Installation
 
 Install Prefix into the IDA plugins folder.
